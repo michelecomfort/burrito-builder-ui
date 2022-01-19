@@ -18,13 +18,14 @@ class App extends Component {
         this.setState({ orders: data.orders })
       })
       .catch(err => console.error('Error fetching:', err));
-      // console.log('data', this.state.data)
   }
 
   addOrder = (newOrder) => {
-    this.setState({ orders: [...this.state.orders, newOrder]})
-    addNewOrder(newOrder)
-    this.componentDidMount()
+    addNewOrder(newOrder) 
+      .then(data => {
+        this.setState({ orders: [...this.state.orders, newOrder]})
+
+      })
   }
 
   render() {

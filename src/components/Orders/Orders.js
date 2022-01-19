@@ -20,7 +20,7 @@ const Orders = ({ orders }) => {
   // }
 
   return (
-    <section>
+    <section data-cy='orders-grid'>
       { orderEls.length ? orderEls : <p>No orders yet!</p> }
     </section>
   )

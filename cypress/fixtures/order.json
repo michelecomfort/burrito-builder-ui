@@ -1,0 +1,9 @@
+{
+    "orders":[
+        {
+            "id": 22, 
+            "name": "Joey",
+            "ingredients": ["lettuce", "jalapenos", "beans"]
+        }
+    ]
+}

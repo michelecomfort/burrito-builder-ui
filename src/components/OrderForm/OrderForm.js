@@ -29,8 +29,11 @@ class OrderForm extends Component {
     if(this.state.name && this.state.ingredients.length) {
 
       this.props.addOrder(newOrder)
+      this.clearInputs();
+    } else {
+      this.clearInputs();
+
     }
-    this.clearInputs();
   }
 
   clearInputs = () => {
@@ -41,15 +44,17 @@ class OrderForm extends Component {
     const possibleIngredients = ['beans', 'steak', 'carnitas', 'sofritas', 'lettuce', 'queso fresco', 'pico de gallo', 'hot sauce', 'guacamole', 'jalapenos', 'cilantro', 'sour cream'];
     const ingredientButtons = possibleIngredients.map(ingredient => {
       return (
-        <button key={ingredient} name={ingredient} value={ingredient} onClick={e => this.handleIngredientChange(e)}>
+        <button data-cy='possible-ingredients' className='possible-ingredients' key={ingredient} name={ingredient} value={ingredient} onClick={e => this.handleIngredientChange(e)}>
           {ingredient}
         </button>
       )
     });
 
     return (
-      <form>
+      <form data-cy='order-form'>
         <input
+          data-cy="name-input"
+          className='name-input'
           type='text'
           placeholder='Name'
           name='name'
@@ -59,9 +64,9 @@ class OrderForm extends Component {
 
         { ingredientButtons }
 
-        <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
+        <p data-cy='order-selection'>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
-        <button onClick={e => this.handleSubmit(e)}>
+        <button data-cy='submit-order' className='submit-order' onClick={e => this.handleSubmit(e)}>
           Submit Order
         </button>
       </form>
